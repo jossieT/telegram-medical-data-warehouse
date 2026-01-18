@@ -1,0 +1,10 @@
+.env
+__pycache__/
+logs/
+data/
+*.pyc
+
+# dbt
+medical_warehouse/target/
+medical_warehouse/dbt_packages/
+medical_warehouse/logs/
