@@ -27,11 +27,15 @@ A robust ELT (Extract, Load, Transform) data pipeline designed to scrape, store,
 │   │   └── telegram_messages/  # Raw JSON Payloads (Partitioned by Date)
 ├── medical_warehouse/          # dbt Project Directory
 │   ├── models/                 # SQL Models (Staging, Marts)
-│   ├── tests/                  # Data Integrity Tests
+│   ├── tests/                  # dbt Data Integrity Tests
 │   └── dbt_project.yml         # dbt Configuration
-├── src/                        # Python Source Code
+├── scripts/                    # ETL Scripts
 │   ├── scraper.py              # Telegram Scraper Script
 │   └── loader.py               # Database Loader Script
+├── api/                        # API Application (Task 4)
+├── notebooks/                  # Analysis Notebooks (Task 3)
+├── tests/                      # Python Unit Tests
+├── logs/                       # Execution Logs
 ├── docker-compose.yml          # Postgres Service Definition
 ├── requirements.txt            # Python Dependencies
 └── .env                        # Environment Variables (Not committed)
@@ -106,7 +110,7 @@ _Note: The database runs on port **5433** to avoid conflicts with local Postgres
 run the scraper to fetch the last 200 messages from configured channels:
 
 ```bash
-python src/scraper.py
+python scripts/scraper.py
 ```
 
 _First run will require entering your Telegram login code._
@@ -116,7 +120,7 @@ _First run will require entering your Telegram login code._
 Load the scraped JSON files into PostgreSQL:
 
 ```bash
-python src/loader.py
+python scripts/loader.py
 ```
 
 #### Step 4: Transform Data (dbt)
