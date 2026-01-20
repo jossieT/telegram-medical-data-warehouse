@@ -8,3 +8,5 @@ data/
 medical_warehouse/target/
 medical_warehouse/dbt_packages/
 medical_warehouse/logs/
+.tmp_dagster_home*
+storage/

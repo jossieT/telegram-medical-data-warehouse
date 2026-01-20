@@ -1,4 +1,8 @@
-Telethon
-psycopg2-binary
+fastapi
+uvicorn
 sqlalchemy
+psycopg2-binary
+pydantic
+python-dotenv
+Telethon
 dbt-postgres
