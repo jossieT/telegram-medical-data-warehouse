@@ -172,6 +172,27 @@ Includes custom tests for:
 - Future date validation
 - Non-negative view counts
 
+## 🤝 Contributing
+
+To ensure a smooth collaboration and maintain code quality, please follow the branching and PR strategy:
+
+### Branching Strategy
+
+- **`main`**: The production-ready branch. Only merges from `develop` or task-specific branches once verified.
+- **`task/task-name`**: feature branches for specific tasks (e.g., `task/dagster-orchestration`).
+- **`fix/bug-name`**: branches for hotfixes or bug resolutions.
+
+### Pull Request (PR) Policy
+
+1.  **Create a Branch**: Always work on a separate branch from `main`.
+2.  **Linting & Tests**: Ensure that all tests pass locally and the linter (`flake8`) shows no errors.
+3.  **CI Validation**: Every PR triggers a GitHub Action that runs:
+    - Code linting (Python)
+    - Unit tests
+    - dbt model compilation
+4.  **Review**: At least one project maintainer must approve the PR before merging.
+5.  **Merge**: Once CI passes and approval is received, merge to `main` using "Squash and Merge" for a clean history.
+
 ## 📄 Documentation
 
 Generate and view auto-generated documentation for the data warehouse:
