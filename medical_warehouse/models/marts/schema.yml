@@ -38,3 +38,18 @@ models:
           - relationships:
               to: ref('dim_dates')
               field: date_key
+
+  - name: fct_image_detections
+    description: "Fact table for YOLOv8 object detections in images."
+    columns:
+      - name: message_id
+        tests:
+          - not_null
+      - name: detected_class
+        tests:
+          - not_null
+      - name: image_category
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["promotional", "product_display", "lifestyle", "other"]
