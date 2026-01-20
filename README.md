@@ -123,15 +123,32 @@ Load the scraped JSON files into PostgreSQL:
 python scripts/loader.py
 ```
 
-#### Step 4: Transform Data (dbt)
-
-Navigate to the dbt project and run the models:
-
 ```bash
 cd medical_warehouse
 dbt deps
 dbt build
 ```
+
+## ⚙️ Orchestration (Dagster)
+
+The entire workflow (scraping, loading, transformation, and enrichment) is orchestrated using **Dagster**. This ensures observability, retries, and scheduled execution.
+
+### Running the Pipeline with Dagster
+
+1.  **Start the Dagster Development Server**:
+
+    ```bash
+    dagster dev -f pipeline.py
+    ```
+
+2.  **Access the UI**:
+    Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+3.  **Execute the Job**:
+    In the Dagster UI, find the `medical_data_pipeline` job and click **"Launch Pad"** -> **"Launch Run"**.
+
+The pipeline follows this dependency graph:
+`scrape_telegram_data` -> `load_raw_to_postgres` -> `run_dbt_transformations` -> `run_yolo_enrichment` (includes YOLO detection and final dbt mart rebuild).
 
 ## 📊 Data Models
 
